@@ -1,0 +1,52 @@
+{
+ "contact": {
+  "title": "Contact",
+  "submit": "Send",
+  "thanks": "Thank you. Your message has been sent.",
+  "fields": [
+   {
+    "key": "first_name",
+    "label": "First Name",
+    "type": "text",
+    "required": false,
+    "max": 200
+   },
+   {
+    "key": "last_name",
+    "label": "Last Name",
+    "type": "text",
+    "required": false,
+    "max": 200
+   },
+   {
+    "key": "email",
+    "label": "Email",
+    "type": "email",
+    "required": true,
+    "max": 200
+   },
+   {
+    "key": "message",
+    "label": "Message",
+    "type": "textarea",
+    "required": false,
+    "max": 5000
+   }
+  ]
+ },
+ "subscribe": {
+  "title": "Mailing list",
+  "submit": "Subscribe Now",
+  "thanks": "Thank you for subscribing.",
+  "fields": [
+   {
+    "key": "email",
+    "label": "Email",
+    "placeholder": "Enter your email here*",
+    "type": "email",
+    "required": true,
+    "max": 200
+   }
+  ]
+ }
+}

@@ -1,0 +1,20 @@
+# Keep credentials and local configuration out of theme history.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+auth.json
+wp-config.php
+.tools/
+exports/
+node_modules/
+vendor/
+dist/
+*.zip
+*.log
+.DS_Store
+Thumbs.db
+.vscode/

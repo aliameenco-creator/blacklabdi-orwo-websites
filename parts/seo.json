@@ -1,0 +1,38 @@
+{
+ "home": {
+  "title": "Home | BlackLAB"
+ },
+ "services": {
+  "title": "Services | BlackLAB"
+ },
+ "post-production": {
+  "title": "Post Production | BlackLAB"
+ },
+ "colour-grading": {
+  "title": "Colour Grading | BlackLAB"
+ },
+ "copy-of-post-production": {
+  "title": "Film Restoration | BlackLAB"
+ },
+ "copy-of-post-production-1": {
+  "title": "Digital Lab | BlackLAB"
+ },
+ "projects": {
+  "title": "Projects | BlackLAB"
+ },
+ "blog": {
+  "title": "News | BlackLAB"
+ },
+ "contact": {
+  "title": "Contact | BlackLAB"
+ },
+ "privacy-policy": {
+  "title": "Privacy Policy | BlackLAB"
+ },
+ "terms-conditions": {
+  "title": "Terms & Conditions | BlackLAB"
+ },
+ "about-7": {
+  "title": "FAQ | BlackLAB"
+ }
+}
