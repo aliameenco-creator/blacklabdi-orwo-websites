@@ -56,6 +56,7 @@ p{margin:0 0 1.15em}
 .sub-menu a:hover{background:rgba(149,129,91,.14)}
 .menu-item-has-children:hover>.sub-menu,.menu-item-has-children:focus-within>.sub-menu,.menu-item-has-children.open>.sub-menu{opacity:1;visibility:visible;transform:none}
 .sub-toggle,.menu-toggle{display:none}
+.sub-menu .sub-toggle{display:none!important}
 
 /* Content wrapper: full-width blocks */
 .blab-content>*{margin:0}
@@ -90,9 +91,10 @@ body:not(.has-hero) .blab-hero-plain{padding-top:clamp(56px,8vw,110px)}
 .wp-block-button__link::after,.blab-btn::after{content:"→";font-size:14px;letter-spacing:0;transition:transform .35s var(--ease)}
 .wp-block-button__link:hover,.blab-btn:hover,.blab-form .btn:hover{background:var(--gold-dark);border-color:var(--gold-dark);color:#fff;transform:translateY(-2px)}
 .wp-block-button__link:hover::after,.blab-btn:hover::after{transform:translateX(4px)}
+.wp-block-button .wp-block-button__link,.wp-block-button.is-style-outline>.wp-block-button__link{padding:16px 30px;border-width:1px;border-style:solid}
 .is-style-outline .wp-block-button__link{background:transparent;border-color:rgba(255,255,255,.55);color:#fff}
 .is-style-outline .wp-block-button__link:hover{background:#fff;border-color:#fff;color:#000}
-.is-style-link .wp-block-button__link{background:none;border:0;border-bottom:1px solid rgba(196,173,128,.6);padding:8px 0;color:var(--gold-light)}
+.wp-block-button.is-style-link .wp-block-button__link{background:none;border:0;border-bottom:1px solid rgba(196,173,128,.6);padding:8px 0;color:var(--gold-light)}
 .is-style-link .wp-block-button__link:hover{background:none;color:#fff;border-color:#fff}
 
 /* Sections */
@@ -145,7 +147,7 @@ body:not(.has-hero) .blab-hero-plain{padding-top:clamp(56px,8vw,110px)}
 .blab-logos.marquee:hover .track{animation-play-state:paused}
 .blab-logo{margin:0;height:96px;display:flex;align-items:center;justify-content:center}
 .blab-logos.marquee .blab-logo{margin:0 clamp(18px,3vw,44px);flex:none;width:170px}
-.blab-logo img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain;filter:grayscale(1) contrast(1.1);opacity:.75;transition:filter .4s,opacity .4s}
+.blab-logo img{mix-blend-mode:multiply;max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain;filter:grayscale(1) contrast(1.1);opacity:.75;transition:filter .4s,opacity .4s}
 .blab-logo:hover img{filter:none;opacity:1}
 @keyframes blab-marquee{to{transform:translateX(-50%)}}
 .blab-touch .wp-block-column:last-child{background:var(--coal);border:1px solid var(--line);padding:clamp(28px,3.5vw,52px)}
@@ -371,6 +373,19 @@ body:not(.has-hero) .blab-hero-plain{padding-top:clamp(56px,8vw,110px)}
   .blab-section{padding-block:72px}
   .menu>li>a{font-size:27px}
   .footer-contact{grid-column:1/-1}
+  .big{font-size:21px;line-height:1.4}
+  .lead{font-size:16.5px}
+  .blab-section h2{font-size:32px;line-height:1.1}
+  .blab-section h3{font-size:24px}
+  .blab-cta h2{font-size:38px}
+  .eyebrow{font-size:10px;letter-spacing:.22em;gap:10px;margin-bottom:16px}
+  .eyebrow::before{width:22px}
+  .blab-page-hero{padding-bottom:44px}
+  .blab-page-hero .wp-block-buttons{margin-top:26px;gap:10px}
+  .blab-page-hero .wp-block-button{flex:1 1 0}
+  .blab-page-hero .wp-block-button__link{width:100%;justify-content:center;padding:15px 14px!important;letter-spacing:.18em}
+  .blab-logos{gap:12px}
+  .blab-logo{height:72px;background:#fff;padding:10px}
 }
 .admin-bar .site-header{top:32px}
 @media (max-width:782px){.admin-bar .site-header{top:46px}}

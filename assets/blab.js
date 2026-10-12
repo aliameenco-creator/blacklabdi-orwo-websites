@@ -41,6 +41,8 @@
     toggle.setAttribute('aria-expanded', String(open));
   });
   d.querySelectorAll('.menu-item-has-children').forEach((li) => {
+    // Only items whose sub menu is actually shown (WordPress also marks items whose deeper levels are hidden).
+    if (!li.querySelector(':scope > .sub-menu') || li.closest('.sub-menu')) return;
     const button = d.createElement('button');
     button.type = 'button';
     button.className = 'sub-toggle';
@@ -57,9 +59,9 @@
   });
   if (nav) nav.addEventListener('click', (e) => { if (e.target.closest('a')) closeMenu(); });
 
-  // Client logos: an endless strip (static for reduced motion).
+  // Client logos: an endless strip on larger screens; two neat rows on phones; static for reduced motion.
   d.querySelectorAll('.blab-logos').forEach((box) => {
-    if (reduce || box.classList.contains('marquee')) return;
+    if (reduce || box.classList.contains('marquee') || !window.matchMedia('(min-width: 901px)').matches) return;
     const track = d.createElement('div');
     track.className = 'track';
     [...box.children].forEach((child) => track.appendChild(child));

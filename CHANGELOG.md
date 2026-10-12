@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.1
+
+- Phone menu: arrows now appear only next to items whose sub menu is shown (stray arrows under Post Production, Colour Grading … removed).
+- Phone hero: the black band under the header is gone. The source video had cinema bars baked into the frame; the hero video and banner frames are now cropped without them. Hero buttons are equal width.
+- Phone text sizes reduced (intro, section headings, labels).
+- Client logos: two neat rows of three on phones (moving strip stays on larger screens); logos trimmed so they appear larger.
+- Film Restoration reel shows a real frame as its preview (the original preview image was all black).
+- New: **Appearance → Black Lab Pages** updates pages created by an earlier version to the new design. Pages nobody edited are ticked; edited pages are left alone unless you tick them, and WordPress keeps the previous version as a revision.
+
 ## 0.2.0
 
 - **Every page is now a normal, editable WordPress page.** "Complete Black Lab setup" creates Home (set as the front page), Services, Post Production, Colour Grading, Film Restoration, Digital Lab, Projects, News, Contact, Privacy Policy, Terms & Conditions and FAQ at their original URLs. Text, images, buttons, videos and galleries are ordinary blocks in the block editor. Existing pages are never overwritten and a deleted page is not re-created.

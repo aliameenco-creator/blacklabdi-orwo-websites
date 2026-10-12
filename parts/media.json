@@ -14,15 +14,15 @@
   "title": "Studio microphone for ADR"
  },
  {
-  "key": "83d2fe6dd1af215a",
-  "file": "assets/img/83d2fe6dd1af215a-500.webp",
+  "key": "f9942cb69486a159",
+  "file": "assets/img/f9942cb69486a159-500.webp",
   "name": "applause-logo",
   "alt": "Applause logo",
   "title": "Applause logo"
  },
  {
-  "key": "0f3a84ef6560632a",
-  "file": "assets/img/0f3a84ef6560632a-1920.webp",
+  "key": "ae3e386bcc7b6b79",
+  "file": "assets/img/ae3e386bcc7b6b79-1920.webp",
   "name": "black-lab-showreel-poster",
   "alt": "",
   "title": "black-lab-showreel-poster"
@@ -35,8 +35,8 @@
   "title": "BlackLAB logo"
  },
  {
-  "key": "1428da6d88ba7bda",
-  "file": "assets/img/1428da6d88ba7bda-500.webp",
+  "key": "e988b24cad143e94",
+  "file": "assets/img/e988b24cad143e94-500.webp",
   "name": "capelight-pictures-logo",
   "alt": "Capelight Pictures logo",
   "title": "Capelight Pictures logo"
@@ -126,8 +126,8 @@
   "title": "Colour grading software panel"
  },
  {
-  "key": "e1ae52e1dd7bdd7a",
-  "file": "assets/img/e1ae52e1dd7bdd7a-500.webp",
+  "key": "a0abd2a6d191fba7",
+  "file": "assets/img/a0abd2a6d191fba7-500.webp",
   "name": "element-pictures-logo",
   "alt": "Element Pictures logo",
   "title": "Element Pictures logo"
@@ -147,8 +147,8 @@
   "title": "Film slates, clapperboards and tape"
  },
  {
-  "key": "c6390c65d3699821",
-  "file": "assets/img/c6390c65d3699821-500.webp",
+  "key": "3946d563c818587c",
+  "file": "assets/img/3946d563c818587c-500.webp",
   "name": "freestyle-digital-media-logo",
   "alt": "Freestyle Digital Media logo",
   "title": "Freestyle Digital Media logo"
@@ -161,8 +161,8 @@
   "title": "Artwork for Glasshouse"
  },
  {
-  "key": "de91b74ee8970781",
-  "file": "assets/img/de91b74ee8970781-500.webp",
+  "key": "6f3aa83789de776a",
+  "file": "assets/img/6f3aa83789de776a-500.webp",
   "name": "historic-films-logo",
   "alt": "Historic Films logo",
   "title": "Historic Films logo"
@@ -189,8 +189,8 @@
   "title": "Artwork for Jeepers Creepers: Reborn"
  },
  {
-  "key": "f3a8008378aa240f",
-  "file": "assets/img/f3a8008378aa240f-500.webp",
+  "key": "ba79d816586fb100",
+  "file": "assets/img/ba79d816586fb100-500.webp",
   "name": "monolith-films-logo",
   "alt": "Monolith Films logo",
   "title": "Monolith Films logo"
@@ -201,6 +201,13 @@
   "name": "post-production-editing-timeline",
   "alt": "Video editing timeline on a dark monitor",
   "title": "Video editing timeline on a dark monitor"
+ },
+ {
+  "key": "2e00313f38ac00ae",
+  "file": "assets/img/2e00313f38ac00ae-1920.webp",
+  "name": "post-production-hero",
+  "alt": "",
+  "title": "post-production-hero"
  },
  {
   "key": "fb9b885e497ae009",
@@ -259,15 +266,15 @@
   "title": "Santa's Chair graded still: autumn woodland"
  },
  {
-  "key": "16143a6ea42e55dd",
-  "file": "assets/img/16143a6ea42e55dd-1400.webp",
+  "key": "0659dcd7e9e0dbdd",
+  "file": "assets/img/0659dcd7e9e0dbdd-1400.webp",
   "name": "santas-chair-restoration-poster",
   "alt": "Santa's Chair restoration reel",
   "title": "Santa's Chair restoration reel"
  },
  {
-  "key": "97e14f4bf82884b7",
-  "file": "assets/img/97e14f4bf82884b7-1920.webp",
+  "key": "84c216a49c7c3a1f",
+  "file": "assets/img/84c216a49c7c3a1f-1920.webp",
   "name": "services-hero-virtual-set",
   "alt": "",
   "title": "services-hero-virtual-set"
@@ -301,6 +308,13 @@
   "title": "Artwork for The Blue Penny"
  },
  {
+  "key": "97e14f4bf82884b7",
+  "file": "assets/img/97e14f4bf82884b7-800.webp",
+  "name": "vfx-virtual-set",
+  "alt": "Virtual set for VFX",
+  "title": "Virtual set for VFX"
+ },
+ {
   "key": "f3495b83c5104523",
   "file": "assets/img/f3495b83c5104523-800.webp",
   "name": "video-editing-timeline",
@@ -323,11 +337,11 @@
   "type": "video"
  },
  {
-  "key": "black-lab-showreel",
-  "file": "assets/video/black-lab-showreel.mp4",
-  "name": "black-lab-showreel",
+  "key": "black-lab-showreel-wide",
+  "file": "assets/video/black-lab-showreel-wide.mp4",
+  "name": "black-lab-showreel-wide",
   "alt": "",
-  "title": "Black Lab Showreel",
+  "title": "Black Lab Showreel Wide",
   "type": "video"
  },
  {
