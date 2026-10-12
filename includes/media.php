@@ -56,17 +56,18 @@ add_action( 'admin_post_blab_media_import', function () {
         // Re-use an attachment from an earlier run (safe to re-run; never duplicates).
         $existing = get_posts( array( 'post_type' => 'attachment', 'post_status' => 'inherit', 'meta_key' => '_blab_media_key', 'meta_value' => $key, 'fields' => 'ids', 'numberposts' => 1 ) ); // phpcs:ignore WordPress.DB.SlowDBQuery
         if ( $existing ) { $ids[ $key ] = (int) $existing[0]; continue; }
-        if ( $imported >= 4 || microtime( true ) - $start > 18 ) { break; }
+        if ( $imported >= 4 || ( $imported && 'video' === ( $m['type'] ?? '' ) ) || microtime( true ) - $start > 18 ) { break; }
         $source = get_theme_file_path( $m['file'] );
-        $tmp = wp_tempnam( $m['name'] . '.webp' );
+        $ext = strtolower( pathinfo( $m['file'], PATHINFO_EXTENSION ) );
+        $tmp = wp_tempnam( $m['name'] . '.' . $ext );
         if ( ! is_readable( $source ) || ! $tmp || ! copy( $source, $tmp ) ) { $failed[ $key ] = 'Bundled file missing: ' . $m['file']; continue; }
-        $id = media_handle_sideload( array( 'name' => $m['name'] . '.webp', 'tmp_name' => $tmp ), 0, $m['title'] );
+        $id = media_handle_sideload( array( 'name' => $m['name'] . '.' . $ext, 'tmp_name' => $tmp ), 0, $m['title'] );
         if ( is_wp_error( $id ) ) {
             wp_delete_file( $tmp );
             $failed[ $key ] = $id->get_error_message();
             continue;
         }
-        update_post_meta( $id, '_wp_attachment_image_alt', sanitize_text_field( $m['alt'] ) );
+        if ( 'video' !== ( $m['type'] ?? '' ) ) { update_post_meta( $id, '_wp_attachment_image_alt', sanitize_text_field( $m['alt'] ) ); }
         update_post_meta( $id, '_blab_media_key', $key );
         $ids[ $key ] = (int) $id;
         ++$imported;
@@ -81,7 +82,8 @@ add_action( 'admin_post_blab_media_import', function () {
         echo '<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=' . esc_url( $next ) . '"><title>Adding images…</title><body style="font:16px system-ui;padding:40px;background:#0b0b0b;color:#eee"><p>Adding Black Lab images to the Media Library: ' . (int) ( $total - $left ) . ' of ' . (int) $total . '…</p><p><a style="color:#fff" href="' . esc_url( $next ) . '">Continue</a></p>';
         exit;
     }
-    wp_safe_redirect( admin_url( 'upload.php?blab_media=done' ) );
+    // Images and videos are in the library: continue the setup (creates the editable pages).
+    wp_safe_redirect( add_query_arg( array( 'action' => 'blab_setup', '_wpnonce' => wp_create_nonce( 'blab_setup' ), 'blab_media' => 'done' ), admin_url( 'admin-post.php' ) ) );
     exit;
 } );
 

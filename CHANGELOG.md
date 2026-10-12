@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.2.0
+
+- **Every page is now a normal, editable WordPress page.** "Complete Black Lab setup" creates Home (set as the front page), Services, Post Production, Colour Grading, Film Restoration, Digital Lab, Projects, News, Contact, Privacy Policy, Terms & Conditions and FAQ at their original URLs. Text, images, buttons, videos and galleries are ordinary blocks in the block editor. Existing pages are never overwritten and a deleted page is not re-created.
+- WordPress's sample "Privacy Policy" draft ("Suggested text: …") is replaced by the site's own Privacy Policy page; logged-in admins no longer see the sample. The untouched "Hello world!" post and "Sample Page" are moved to the trash.
+- The menu is a normal WordPress menu (Appearance → Menus), created with the original items and the Services dropdown.
+- Videos are added to the Media Library too (images were already).
+- New design with the same images, videos, logo and black/gold brand: full-screen video hero with the headline revealed line by line, header over the hero that turns solid on scroll, Cormorant Garamond headings with Manrope text, picture banner on every page, service tiles, project posters, moving client logo strip, contact band and a new footer (services, links, contact details, mailing list).
+- Spelling corrected: "PARNTERNS" → "partners", "Louisianna" → "Louisiana", "Jackon" → "Jackson".
+
 ## 0.1.0
 
 First release of the Black Lab theme, built from the archived Wix site (blacklabdi.com) and its live supplement.

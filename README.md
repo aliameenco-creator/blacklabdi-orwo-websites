@@ -5,10 +5,12 @@ Custom theme for **BlackLAB** (blacklabdi.com), rebuilt from the archived Wix si
 ## Install
 
 1. WordPress → Appearance → Themes → Add New → Upload Theme → choose `black-lab.zip` → Install → Activate.
-2. Click **Complete Black Lab setup** in the yellow notice: turns on pretty permalinks, sets the site title to "BlackLAB" and adds every image to the Media Library with descriptive names and alt text.
+2. Click **Complete Black Lab setup** in the yellow notice: turns on pretty permalinks, sets the site title to "BlackLAB", adds every image and video to the Media Library, then creates all pages (Home as front page) and the Main menu.
 3. Send one real test enquiry from `/contact` and confirm it reaches info@blacklabdi.com (change the address under Settings → General). If it does not arrive, install an SMTP plugin; the enquiry is still saved under **Enquiries**.
 
-No pages or imports are needed: the pages are part of the theme and live at their original URLs. Creating a normal WordPress page with the same slug (for example `privacy-policy`) takes over that URL, so you can write the policy text in the editor.
+## Editing
+
+Pages → edit any page in the block editor (text, images, buttons, videos). Menu: Appearance → Menus. Form recipient: Settings → General. Footer contact details live in the theme (`parts/footer.html`).
 
 ## Updates
 
@@ -18,7 +20,7 @@ Appearance → **Black Lab Updates** checks the latest stable `vX.Y.Z` GitHub re
 
 | Thing | Where |
 | --- | --- |
-| Pages, header, footer | `parts/*.html` (generated from the archive) |
+| Page content (copied into WordPress pages by setup), footer | `parts/pages/*.html`, `parts/footer.html` (generated from the archive) |
 | Form definitions | `parts/forms.json` |
 | Original page titles | `parts/seo.json` |
 | Images, videos, favicon, fonts | `assets/` |

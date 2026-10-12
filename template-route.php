@@ -1,5 +1,5 @@
 <?php
-/** Original Black Lab URLs (services, projects, contact …) served from theme layouts generated from the archive. */
+/** Original URL served before its editable WordPress page exists: renders the same block content the page will get. */
 get_header();
-blab_theme_part( 'pages/' . ( $GLOBALS['blab_route'] ?? '' ) );
+echo '<div class="blab-content">' . apply_filters( 'the_content', blab_page_markup( $GLOBALS['blab_route'] ?? '' ) ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Theme block markup.
 get_footer();

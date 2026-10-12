@@ -1,11 +1,12 @@
 <?php
-/** Pages created in WordPress (they take over an original URL when their slug matches). */
+/** WordPress pages: the original pages carry their own hero; other pages get a heading band. */
 get_header();
 while ( have_posts() ) :
     the_post();
-    blab_page_head( get_the_title() );
-    echo '<section class="band band-white"><article class="wrap narrow prose">';
+    $blab_hero = str_contains( (string) get_the_content(), 'blab-page-hero' );
+    if ( ! $blab_hero ) { blab_page_head( get_the_title() ); }
+    echo '<div class="blab-content' . ( $blab_hero ? '' : ' blab-prose' ) . '">';
     the_content();
-    echo '</article></section>';
+    echo '</div>';
 endwhile;
 get_footer();

@@ -1,0 +1,86 @@
+[
+ {
+  "slug": "home",
+  "title": "Home",
+  "seo_title": "Home | BlackLAB",
+  "front": true,
+  "privacy": false
+ },
+ {
+  "slug": "services",
+  "title": "Services",
+  "seo_title": "Services | BlackLAB",
+  "front": false,
+  "privacy": false
+ },
+ {
+  "slug": "post-production",
+  "title": "Post Production",
+  "seo_title": "Post Production | BlackLAB",
+  "front": false,
+  "privacy": false
+ },
+ {
+  "slug": "colour-grading",
+  "title": "Colour Grading",
+  "seo_title": "Colour Grading | BlackLAB",
+  "front": false,
+  "privacy": false
+ },
+ {
+  "slug": "copy-of-post-production",
+  "title": "Film Restoration",
+  "seo_title": "Film Restoration | BlackLAB",
+  "front": false,
+  "privacy": false
+ },
+ {
+  "slug": "copy-of-post-production-1",
+  "title": "Digital Lab",
+  "seo_title": "Digital Lab | BlackLAB",
+  "front": false,
+  "privacy": false
+ },
+ {
+  "slug": "projects",
+  "title": "Projects",
+  "seo_title": "Projects | BlackLAB",
+  "front": false,
+  "privacy": false
+ },
+ {
+  "slug": "blog",
+  "title": "News",
+  "seo_title": "News | BlackLAB",
+  "front": false,
+  "privacy": false
+ },
+ {
+  "slug": "contact",
+  "title": "Contact",
+  "seo_title": "Contact | BlackLAB",
+  "front": false,
+  "privacy": false
+ },
+ {
+  "slug": "privacy-policy",
+  "title": "Privacy Policy",
+  "seo_title": "Privacy Policy | BlackLAB",
+  "front": false,
+  "privacy": true
+ },
+ {
+  "slug": "terms-conditions",
+  "title": "Terms & Conditions",
+  "seo_title": "Terms & Conditions | BlackLAB",
+  "front": false,
+  "privacy": false
+ },
+ {
+  "slug": "about-7",
+  "title": "FAQ",
+  "seo_title": "FAQ | BlackLAB",
+  "front": false,
+  "privacy": false
+ }
+]

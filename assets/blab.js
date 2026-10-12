@@ -5,25 +5,33 @@
   const header = d.querySelector('[data-header]');
   const adminBar = d.getElementById('wpadminbar');
 
-  // Header shadow once scrolled; sits under the WordPress admin bar while that bar is visible.
+  // Header: solid once scrolled; sits under the WordPress admin bar while that bar is visible.
   let ticking = false;
   const frame = () => {
     ticking = false;
-    if (header) {
-      header.classList.toggle('scrolled', window.scrollY > 24);
-      header.style.top = adminBar ? Math.max(0, adminBar.getBoundingClientRect().bottom) + 'px' : '';
-    }
+    if (!header) return;
+    header.classList.toggle('scrolled', window.scrollY > 40);
+    header.style.top = adminBar ? Math.max(0, adminBar.getBoundingClientRect().bottom) + 'px' : '';
   };
   const onScroll = () => { if (!ticking) { ticking = true; window.requestAnimationFrame(frame); } };
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
   frame();
 
-  // Hero loop: stays still for visitors who asked for reduced motion.
-  const hero = d.querySelector('.hero-video');
-  if (hero && reduce) { hero.removeAttribute('autoplay'); hero.pause(); }
+  // Hero video loop: still for visitors who asked for reduced motion.
+  d.querySelectorAll('.blab-hero-bg video').forEach((v) => {
+    if (reduce) { v.removeAttribute('autoplay'); v.pause(); return; }
+    v.muted = true;
+    v.play().catch(() => {});
+  });
 
-  // Mobile menu and sub menus (tap), desktop dropdown also closes with Escape.
+  // Hero title: reveal line by line (lines are the <br> breaks in the heading).
+  d.querySelectorAll('.blab-page-hero .blab-title').forEach((title) => {
+    const lines = title.innerHTML.split(/<br\s*\/?>/i).map((s) => s.trim()).filter(Boolean);
+    title.innerHTML = lines.map((line, i) => '<span class="line" style="--i:' + i + '"><span>' + line + '</span></span>').join('');
+  });
+
+  // Menu: phone panel, tap-to-open sub menus (a toggle button is added to every parent item), Escape closes.
   const toggle = d.querySelector('.menu-toggle');
   const nav = d.getElementById('navigation');
   const closeMenu = () => { d.body.classList.remove('menu-open'); if (toggle) toggle.setAttribute('aria-expanded', 'false'); };
@@ -32,39 +40,57 @@
     const open = d.body.classList.toggle('menu-open');
     toggle.setAttribute('aria-expanded', String(open));
   });
-  d.querySelectorAll('.sub-toggle').forEach((button) => button.addEventListener('click', () => {
-    const li = button.closest('.has-sub');
-    const open = li.classList.toggle('open');
-    button.setAttribute('aria-expanded', String(open));
-  }));
+  d.querySelectorAll('.menu-item-has-children').forEach((li) => {
+    const button = d.createElement('button');
+    button.type = 'button';
+    button.className = 'sub-toggle';
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-label', (li.querySelector('a') || {}).textContent + ' submenu');
+    li.querySelector('a').after(button);
+    button.addEventListener('click', () => button.setAttribute('aria-expanded', String(li.classList.toggle('open'))));
+  });
   d.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape') return;
     closeMenu();
-    d.querySelectorAll('.has-sub.open').forEach((li) => li.classList.remove('open'));
-    if (d.activeElement && d.activeElement.closest('.has-sub')) d.activeElement.blur();
+    d.querySelectorAll('.menu-item-has-children.open').forEach((li) => li.classList.remove('open'));
+    if (d.activeElement && d.activeElement.closest('.menu-item-has-children')) d.activeElement.blur();
   });
   if (nav) nav.addEventListener('click', (e) => { if (e.target.closest('a')) closeMenu(); });
 
-  // Reveal on scroll (staggered siblings) with a safety net for fast jumps.
-  const items = [...d.querySelectorAll('[data-reveal]')];
+  // Client logos: an endless strip (static for reduced motion).
+  d.querySelectorAll('.blab-logos').forEach((box) => {
+    if (reduce || box.classList.contains('marquee')) return;
+    const track = d.createElement('div');
+    track.className = 'track';
+    [...box.children].forEach((child) => track.appendChild(child));
+    [...track.children].forEach((child) => { const copy = child.cloneNode(true); copy.setAttribute('aria-hidden', 'true'); copy.querySelectorAll('img').forEach((i) => { i.alt = ''; }); copy.querySelectorAll('a').forEach((a) => a.setAttribute('tabindex', '-1')); track.appendChild(copy); });
+    box.appendChild(track);
+    box.classList.add('marquee');
+  });
+
+  // Reveal on scroll: section headings, cards, tiles, columns and media fade up with small staggers.
+  const targets = '.blab-section-head, .blab-intro .wp-block-column, .blab-card, .blab-tile, .blab-project, .blab-poster, .blab-compare, .blab-video, .blab-three .wp-block-column, .blab-location, .blab-icon-row li, .blab-stills figure, .blab-split > .wp-block-column, .blab-lab-text .wp-block-column, .blab-post-card, .blab-restore > p, .blab-cta-inner > *';
+  const items = [...d.querySelectorAll(targets)].filter((el) => !el.closest('.blab-page-hero'));
+  items.forEach((el) => el.setAttribute('data-reveal', ''));
   const show = (el) => el.classList.add('in');
   if (reduce || !('IntersectionObserver' in window)) {
     items.forEach(show);
   } else {
     const io = new IntersectionObserver((entries) => entries.forEach((entry) => {
       if (entry.isIntersecting) { show(entry.target); io.unobserve(entry.target); }
-    }), { rootMargin: '0px 0px -6% 0px', threshold: 0.06 });
+    }), { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
     items.forEach((el) => {
       const siblings = [...el.parentElement.children].filter((c) => c.hasAttribute('data-reveal'));
       const index = siblings.indexOf(el);
-      if (index > 0) el.style.setProperty('--d', String(Math.min(index, 5)));
+      if (index > 0) el.style.setProperty('--d', String(Math.min(index % 5, 4)));
       io.observe(el);
     });
+    // Safety net for fast jumps: anything already scrolled past is shown.
     let pending = items.slice();
     let sweeping = false;
     const sweep = () => {
       sweeping = false;
-      const limit = window.innerHeight * 0.94;
+      const limit = window.innerHeight * 0.95;
       pending = pending.filter((el) => {
         if (el.getBoundingClientRect().top < limit) { show(el); io.unobserve(el); return false; }
         return true;
@@ -77,20 +103,6 @@
   }
   window.addEventListener('beforeprint', () => items.forEach(show));
 
-  // Click-to-play videos: the player loads only when asked for (keeps pages fast).
-  d.querySelectorAll('.video-card[data-video]').forEach((card) => card.addEventListener('click', () => {
-    if (card.classList.contains('playing')) return;
-    const video = d.createElement('video');
-    video.src = card.dataset.video;
-    video.controls = true;
-    video.autoplay = true;
-    video.playsInline = true;
-    video.setAttribute('aria-label', card.getAttribute('aria-label') || 'Video');
-    card.replaceChildren(video);
-    card.classList.add('playing');
-    video.play().catch(() => {});
-  }));
-
   // Before / after grading sliders (also usable with the keyboard through the range input).
   d.querySelectorAll('[data-compare]').forEach((box) => {
     const range = box.querySelector('.cmp-range');
@@ -99,8 +111,8 @@
     set();
   });
 
-  // Gallery lightbox.
-  const links = [...d.querySelectorAll('[data-lightbox]')];
+  // Gallery lightbox (restoration stills and any gallery linked to its images).
+  const links = [...d.querySelectorAll('.wp-block-gallery a[href]')].filter((a) => a.querySelector('img'));
   if (links.length) {
     const box = d.createElement('dialog');
     box.className = 'lightbox';
@@ -143,6 +155,7 @@
       if (first) { say('form-error', 'Please check the highlighted fields.'); first.focus(); return; }
       form.classList.add('sending');
       try {
+        // getAttribute: the hidden field named "action" shadows form.action.
         const response = await fetch(form.getAttribute('action'), { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' }, credentials: 'same-origin' });
         const result = await response.json();
         if (result.ok) {
